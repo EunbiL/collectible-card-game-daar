@@ -4,15 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "DOTENV_CONFIG_PATH=../.env hardhat node --export ../frontend/src/contracts.json --watch",
-    "console": "DOTENV_CONFIG_PATH=../.env hardhat console",
-    "compile": "DOTENV_CONFIG_PATH=../.env hardhat compile",
-    "deploy:local": "DOTENV_CONFIG_PATH=../.env hardhat deploy --network localhost --export ../frontend/src/contracts.json",
-    "deploy:staging": "DOTENV_CONFIG_PATH=../.env hardhat deploy --network kovan",
-    "deploy:production": "DOTENV_CONFIG_PATH=../.env hardhat deploy --network polygon",
-    "export:local": "DOTENV_CONFIG_PATH=../.env hardhat export --network localhost --export ../frontend/src/contracts.json",
-    "export:production": "DOTENV_CONFIG_PATH=../.env hardhat export --network polygon --export ../frontend/src/contracts.json",
-    "test": "DOTENV_CONFIG_PATH=../.env hardhat test"
+    "dev": "set DOTENV_CONFIG_PATH=../.env && hardhat node --export ../frontend/src/contracts.json --watch",
+    "console": "set DOTENV_CONFIG_PATH=../.env && hardhat console",
+    "compile": "set DOTENV_CONFIG_PATH=../.env && hardhat compile",
+    "deploy:local": "set DOTENV_CONFIG_PATH=../.env && hardhat deploy --network localhost --export ../frontend/src/contracts.json",
+    "deploy:staging": "set DOTENV_CONFIG_PATH=../.env && hardhat deploy --network kovan",
+    "deploy:production": "set DOTENV_CONFIG_PATH=../.env && hardhat deploy --network polygon",
+    "export:local": "set DOTENV_CONFIG_PATH=../.env && hardhat export --network localhost --export ../frontend/src/contracts.json",
+    "export:production": "set DOTENV_CONFIG_PATH=../.env && hardhat export --network polygon --export ../frontend/src/contracts.json",
+    "test": "set DOTENV_CONFIG_PATH=../.env && hardhat test"    
   },
   "dependencies": {
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",
@@ -37,6 +37,7 @@
     "typescript": "^4.8.4"
   },
   "devDependencies": {
-    "hardhat-abi-exporter": "^2.10.1"
+    "hardhat-abi-exporter": "^2.10.1",
+    "solc": "^0.8.1"
   }
 }

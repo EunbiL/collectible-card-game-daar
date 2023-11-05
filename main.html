@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NFT Creator</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+</head>
+<body>
+  <h1>NFT Creator</h1>
+  <p>Create a new collection:</p>
+  <input type="text" id="collectionName" placeholder="Collection Name">
+  <input type="number" id="cardCount" placeholder="Card Count">
+  <button id="createCollectionButton">Create Collection</button>
+
+  <p>Mint a card:</p>
+  <input type="text" id="userAddress" placeholder="User Address">
+  <input type="number" id="collectionIndex" placeholder="Collection Index">
+  <input type="number" id="tokenId" placeholder="Token ID">
+  <input type="number" id="cardNumber" placeholder="Card Number">
+  <input type="text" id="imgUri" placeholder="Image URI">
+  <button id="mintCardButton">Mint Card</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+  <script>
+    // Infura project ID and Ethereum network (replace with your own)
+    const infuraProjectId = "YOUR_INFURA_PROJECT_ID";
+    const network = "mainnet"; // Replace with the desired Ethereum network (mainnet, rinkeby, ropsten, etc.)
+
+    // Main contract address and ABI
+    const mainContractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"; // Replace with your contract address
+    const mainContractABI = []; // Replace with your contract ABI
+
+    // Function to create a collection
+    async function createCollection() {
+      const collectionName = document.getElementById("collectionName").value;
+      const cardCount = document.getElementById("cardCount").value;
+      const userAddress = document.getElementById("userAddress").value; // User's Ethereum address
+
+      // Initialize Web3 with Infura provider
+      const web3 = new Web3(new Web3.providers.HttpProvider(`https://${network}.infura.io/v3/${infuraProjectId}`));
+
+      // Create a contract instance
+      const mainContract = new web3.eth.Contract(mainContractABI, mainContractAddress);
+
+      // Send the createCollection transaction
+      try {
+        await mainContract.methods.createCollection(collectionName, cardCount).send({ from: userAddress });
+        alert("Collection created successfully!");
+      } catch (error) {
+        console.error("Error creating collection:", error);
+      }
+    }
+
+    // Add event listeners to the buttons
+    document.getElementById("createCollectionButton").addEventListener("click", createCollection);
+
+    // Function to mint a card
+    // (Add mintCard function similar to createCollection using the same approach as above)
+  </script>
+</body>
+</html>

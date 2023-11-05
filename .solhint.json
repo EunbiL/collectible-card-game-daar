@@ -3,6 +3,7 @@
   "rules": {
     "indent": 2,
     "two-lines-top-level-separator": false,
-    "compiler-fixed": false
+    "compiler-fixed": false,
+    "no-global-import": false
   }
 }
